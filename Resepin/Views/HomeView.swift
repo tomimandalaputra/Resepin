@@ -58,7 +58,11 @@ struct HomeView: View {
                .aspectRatio(contentMode: .fit)
                .frame(width: 20)
 
-            Text("tomimandalaputra")
+            if let user = sessionManager.currentUser {
+               Text("\(user.username)")
+            } else {
+               Text("username")
+            }
          }
 
          HStack {
@@ -67,7 +71,11 @@ struct HomeView: View {
                .aspectRatio(contentMode: .fit)
                .frame(width: 20)
 
-            Text(verbatim: "example@mail.com")
+            if let user = sessionManager.currentUser {
+               Text(verbatim: user.email)
+            } else {
+               Text(verbatim: "example@mail.com")
+            }
          }
 
          Button(action: {
